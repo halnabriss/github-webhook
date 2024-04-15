@@ -1,4 +1,8 @@
 <?php
+
+//The scripts in this repo are created by Hadi Alnabriss (alnabris@gmail.com) , you can use them, modify and redistribute without
+//any legal circumestances or licenses.
+
 //Check the github secret
 
 $secret_sent_from_github = $_SERVER['HTTP_X_HUB_SIGNATURE'];
