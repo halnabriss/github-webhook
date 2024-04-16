@@ -10,7 +10,8 @@ $true_secret = "sha1=".hash_hmac( 'sha1', file_get_contents('php://input') ,'myp
 
 if( $secret_sent_from_github == $true_secret ){
 
-  //read data from the request , and save important infotmation to a temp file
+  //read data from the request , and save important infotmation to a temp file, this temp file should be read later by a bash script
+  // to avoid using dangerous functions like system, shell and shell_exec. here we add the hashes for testing purposes
   
         file_put_contents('./new/x', $secret_sent_from_github."\n");
         file_put_contents('./new/x', $true_secret."\n" , FILE_APPEND);
