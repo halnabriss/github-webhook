@@ -1,1 +1,33 @@
+#!/bin/bash
+#This script checks if the file '/var/www/html/github-webhook/new/repo_info' exists or not
+#This file is created by our php script 'php-webhook.php' , the check goes every 10 seconds
 
+temp_file=/var/www/html/github-webhook/new/repo_info
+
+#This infinite loop checks if the file exists every 10 seconds
+while true; do
+
+# If the file exists, we are going to read the cloning URL
+if [ -f $temp_file ]; then
+
+        #Read cloning URL
+        clone_url=$(tail -1 /var/www/html/github-webhook/new/repo_info)
+        
+        ## We are going to make a staging directory in the directory /var/www/html/temp
+        ## If the directory '/var/www/html/temp' exists, it will be deleted and recreated
+        rm -fr /var/www/html/temp
+        mkdir /var/www/html/temp
+
+        #clone the repo to the temp directory
+        git clone $clone_url /var/www/html/temp
+
+        #update our style directory
+        rsync -a --delete /var/www/html/temp/ /var/www/html/style/
+        #eventually delete the temp file and staging directories
+        rm -f $temp_file
+        rm -fr /var/www/html/temp
+
+        #wait 10 seconds
+        sleep 10
+fi
+done
