@@ -1,5 +1,5 @@
 <?php
-
+include('x.php');
 //The scripts in this repo are created by Hadi Alnabriss (alnabris@gmail.com) , you can use them, modify and redistribute without
 //any legal circumestances or licenses.
 int $m = 'hello'
