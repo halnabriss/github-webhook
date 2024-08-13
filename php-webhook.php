@@ -2,7 +2,7 @@
 
 //The scripts in this repo are created by Hadi Alnabriss (alnabris@gmail.com) , you can use them, modify and redistribute without
 //any legal circumestances or licenses.
-
+$x = $m;
 //Check the github secret, in this example we assume that the created webhook uses the password 'mypass123'
 //We actually check the hashes not the clear text passwords
 
